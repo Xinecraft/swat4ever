@@ -1,9 +1,9 @@
 exports.commands = [
-	"create",
-	"voice",
-	"delete",
-	"servers",
-	"topic"
+	//"create",
+	//"voice",
+	//"delete",
+	"botservers"
+	//"topic"
 ]
 
 exports.create = {
@@ -18,7 +18,7 @@ exports.create = {
 	}
 }
 
-exports.servers = {
+exports.botservers = {
 description: "Tells you what servers the bot is in",
 process: function(bot,msg) {
 	msg.channel.sendMessage(`__**${bot.user.username} is currently on the following servers:**__ \n\n${bot.guilds.map(g => `${g.name} - **${g.memberCount} Members**`).join(`\n`)}`, {split: true});

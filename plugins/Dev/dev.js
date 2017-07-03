@@ -1,5 +1,5 @@
 exports.commands = [
-	"pullanddeploy",
+	/*"pullanddeploy",*/
 	"version",
 	"myid",
 	"userid"
@@ -48,15 +48,7 @@ exports.pullanddeploy = {
 exports.version = {
 	description: "returns the git commit this bot is running",
 	process: function(bot,msg,suffix) {
-		var commit = require('child_process').spawn('git', ['log','-n','1']);
-		commit.stdout.on('data', function(data) {
-			msg.channel.sendMessage(data);
-		});
-		commit.on('close',function(code) {
-			if( code != 0){
-				msg.channel.sendMessage("failed checking git version!");
-			}
-		});
+		msg.channel.sendMessage("Bot Version is **0.1 Beta**")
 	}
 }
 

@@ -123,7 +123,8 @@ var commands = {
             }
         }
     },
-    "idle": {
+    /*
+	"idle": {
 				usage: "[status]",
         description: "sets bot status to idle",
         process: function(bot,msg,suffix){ 
@@ -139,6 +140,7 @@ var commands = {
 	    bot.user.setGame(suffix);
 	}
     },
+	*/
     "say": {
         usage: "<message>",
         description: "bot says message",
@@ -213,6 +215,16 @@ bot.on("ready", function () {
 	bot.user.setGame(Config.commandPrefix+"help | " + bot.guilds.array().length +" Servers"); 
 });
 
+bot.on("guildMemberAdd", (member) => {
+   var guild = member.guild;
+   guild.defaultChannel.send(member+", Welcome to **"+guild.name+"**! Be nice & have fun.");
+});
+
+bot.on("guildMemberRemove", (member) => {
+   var guild = member.guild;
+   guild.defaultChannel.send("**"+member.displayName+"** left our server. Bye bye **"+member.displayName+"**!");
+});
+
 bot.on("disconnected", function () {
 
 	console.log("Disconnected!");
@@ -226,7 +238,9 @@ function checkMessageForCommand(msg, isEdit) {
         console.log("treating " + msg.content + " from " + msg.author + " as command");
 		var cmdTxt = msg.content.split(" ")[0].substring(Config.commandPrefix.length);
         var suffix = msg.content.substring(cmdTxt.length+Config.commandPrefix.length+1);//add one for the ! and one for the space
-        if(msg.isMentioned(bot.user)){
+        
+		/**
+		if(msg.isMentioned(bot.user)){
 			try {
 				cmdTxt = msg.content.split(" ")[1];
 				suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+Config.commandPrefix.length+1);
@@ -235,6 +249,8 @@ function checkMessageForCommand(msg, isEdit) {
 				return;
 			}
         }
+		*/
+
 		alias = aliases[cmdTxt];
 		if(alias){
 			console.log(cmdTxt + " is an alias, constructed command is " + alias.join(" ") + " " + suffix);
@@ -311,7 +327,7 @@ function checkMessageForCommand(msg, isEdit) {
 				msg.channel.sendMessage("You are not allowed to run " + cmdTxt + "!");
 			}
 		} else {
-			msg.channel.sendMessage(cmdTxt + " not recognized as a command!").then((message => message.delete(5000)))
+			//msg.channel.sendMessage(cmdTxt + " not recognized as a command!").then((message => message.delete(5000)))
 		}
 	} else {
 		//message isn't a command or is from us
@@ -320,7 +336,27 @@ function checkMessageForCommand(msg, isEdit) {
             return;
         }
 
-        if (msg.author != bot.user && msg.isMentioned(bot.user)) {
+		//Check msg for 2v2 fun
+		if((msg.cleanContent.toUpperCase().indexOf("2V2") > -1 || msg.cleanContent.toUpperCase().indexOf("2N2") > -1 || msg.cleanContent.toUpperCase().indexOf("2X2") > -1 || msg.cleanContent.toUpperCase().indexOf("2NA2") > -1 || msg.cleanContent.toUpperCase().indexOf("2VS2") > -1 || msg.cleanContent.toUpperCase().indexOf("2ON2") > -1) && (msg.cleanContent.indexOf("?") > -1 || msg.cleanContent.indexOf("any") > -1 || msg.cleanContent.indexOf("want") > -1))
+		{
+			var funs = [
+				"You are too low!",
+				"Ok go 31.186.250.32:10480",
+				"2v2? LOL you are low even in Sims.",
+				"why 2v2? Lets go 1v1!",
+				"Man, you are izi !",
+				"You do anything else in your life except 2v2?",
+				"Ok, go in KoS server im waiting for you there!",
+				"I would like to, but sorry I dont play vs noobs!",
+				"I'm too PRO for you!",
+				"Hahaha bring all your mates, I will play 1v10!",
+				"You are nothing to me, Go play tetris."
+			]
+			var fun = funs[Math.floor(Math.random() * funs.length)];
+			msg.channel.sendMessage(msg.author+", "+fun)
+		}
+
+        if (msg.author != bot.user && msg.isMentioned(bot.user) && !msg.author.bot) {
                 msg.channel.sendMessage(msg.author + ", you called?");
         } else {
 

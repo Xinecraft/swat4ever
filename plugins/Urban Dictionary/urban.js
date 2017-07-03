@@ -1,12 +1,12 @@
 var urban = require("urban");
 
 exports.commands = [
-	"urban"
+	"define"
 ];
 
-exports.urban = {
+exports.define = {
 			usage: "<word>",
-			description: "looks up a word on Urban Dictionary",
+			description: "looks up and define a word on Urban Dictionary",
 			process: function(bot,msg,suffix){
 					var targetWord = suffix == "" ? urban.random() : urban(suffix);
 					targetWord.first(function(json) {

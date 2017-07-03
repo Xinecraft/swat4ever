@@ -1,0 +1,6 @@
+{
+  "main": "kos.js",
+  "dependencies": {
+    "request": "latest"
+  }
+}

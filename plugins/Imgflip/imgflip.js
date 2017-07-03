@@ -18,7 +18,27 @@ var meme = {
 	"skeptical": 101711,
 	"notime": 442575,
 	"yodawg": 101716,
-	"awkwardpenguin": 61584
+	"awkwardpenguin": 61584,
+	"ancientalien": 101470,
+	"everywhere": 347390,
+	"faceplan": 1509839,
+	"leocheers": 5496396,
+	"africankid": 101288,
+	"grumpycat": 405658,
+	"whatif": 100947,
+	"amionly": 259680,
+	"idareyou": 124212,
+	"computerguy": 105347391,
+	"swatff": 105431428,
+	"swatwc": 105431628,
+	"swatgang": 105431693,
+	"swatsmoke": 105431736,
+	"swatbar": 105431773,
+	"swatcum": 105431813,
+	"swathandwash": 105431844,
+	"swatdj": 105431898,
+	"swatrussian": 105431949,
+	"swatjogging": 105431983
 };
 
 exports.meme = {

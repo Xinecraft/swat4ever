@@ -1,5 +1,5 @@
 exports.commands = [
-	"setUsername",
+	//"setUsername",
 	"log",
 	"uptime"
 ]

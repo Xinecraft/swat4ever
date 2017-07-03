@@ -1,0 +1,11 @@
+{
+	"email" : "email of the discord account here if using a user account",
+	"password" : "password of the discord account here if using a user account",
+	"bot_token" : "MzIxNzk4MTMxMzU0MzA0NTE1.DBjRYg.lrFkHBa9TNmHpSZ_NsleO1zz3Kk",
+	"client_id" : "321798131354304515",
+	"youtube_api_key": "AIzaSyC3fRIgaY-BAbOzhf9zNkAluiSkekPrCdk",
+	"google_custom_search": "006359879216944871760:etq2-2_mjlu",
+	"imgflip_username": "kinnngg",
+	"imgflip_password": "proakanoob786",
+	"wolfram_api_key": "J7XGQJ-K98WGEE369"
+}
